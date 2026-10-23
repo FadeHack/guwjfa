@@ -146,6 +146,7 @@ and checks both the app and the API answer through it.
 
 ```
 .
+├── LICENSE                   MIT
 ├── docker-compose.yml        Full stack locally (app :8080, API :8000)
 ├── render.yaml               Render service definition for the API
 ├── .github/workflows/
@@ -204,3 +205,8 @@ and checks both the app and the API answer through it.
 
 Claude Code (an AI coding tool) helped with parts of this project, mainly generalising and refining
 code.
+
+## Licence
+
+The code is under the MIT licence (see `LICENSE`). The data in `backend/data/` comes from Elexon
+BMRS and remains subject to Elexon's terms of use.
