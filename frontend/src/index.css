@@ -15,7 +15,7 @@
   --forecast-on-ink: #79a7ff;
   --actual: #17191c;
   --over: #b5470b;
-  --under: #0b7a78;
+  --under: #008a7e;
 }
 
 :root[data-theme='dark'] {
@@ -30,8 +30,8 @@
   --forecast: #79a7ff;
   --forecast-on-ink: #1d5fcc;
   --actual: #ecebe7;
-  --over: #f0884a;
-  --under: #3db8b3;
+  --over: #de7334;
+  --under: #1fa39e;
 }
 
 @theme inline {

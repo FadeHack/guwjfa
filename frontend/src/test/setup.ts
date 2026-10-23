@@ -2,6 +2,7 @@ import '@testing-library/jest-dom/vitest'
 import { cleanup } from '@testing-library/react'
 import { act } from 'react'
 import { afterEach, vi } from 'vitest'
+import { clearApiCache } from '../api/useApi'
 
 // jsdom has no matchMedia. This fake lets a test flip a query and fire its change listeners.
 const matches = new Map<string, boolean>()
@@ -12,7 +13,7 @@ export function setMediaQuery(query: string, value: boolean) {
   act(() => listeners.get(query)?.forEach((fn) => fn()))
 }
 
-vi.stubGlobal('matchMedia', (query: string) => ({
+const fakeMatchMedia = (query: string) => ({
   get matches() {
     return matches.get(query) ?? false
   },
@@ -22,7 +23,8 @@ vi.stubGlobal('matchMedia', (query: string) => ({
     listeners.get(query)!.add(fn)
   },
   removeEventListener: (_: 'change', fn: () => void) => listeners.get(query)?.delete(fn),
-}))
+})
+vi.stubGlobal('matchMedia', fakeMatchMedia)
 
 afterEach(() => {
   cleanup()
@@ -30,4 +32,8 @@ afterEach(() => {
   listeners.clear()
   localStorage.clear()
   delete document.documentElement.dataset.theme
+  clearApiCache()
+  window.history.replaceState(null, '', '/')
+  vi.unstubAllGlobals()
+  vi.stubGlobal('matchMedia', fakeMatchMedia)
 })
