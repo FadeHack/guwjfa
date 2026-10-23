@@ -1,0 +1,15 @@
+# Render's free instances sleep after 15 idle minutes and take about a minute to wake.
+# Set the repository variable BACKEND_URL to the deployed API origin to keep it awake.
+name: Keep backend warm
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    if: vars.BACKEND_URL != ''
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl --fail --silent --show-error --max-time 90 --retry 2 "${{ vars.BACKEND_URL }}/api/health"

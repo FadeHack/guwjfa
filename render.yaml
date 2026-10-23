@@ -1,0 +1,14 @@
+# Render Blueprint for the API. The frontend is deployed on Vercel.
+services:
+  - type: web
+    name: wind-monitor-api
+    runtime: docker
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: REINT_CORS_ORIGINS
+        sync: false
