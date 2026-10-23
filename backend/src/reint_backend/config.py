@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, time
 from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -21,6 +21,11 @@ class Settings(BaseSettings):
     # Forecast runs reach ~66 h ahead, so 72 h before the first target captures every run
     # that says anything about it.
     forecast_lookback_hours: int = 72
+
+    # Day-ahead purchase deadline on D-1, in market local time. 09:20 is EPEX SPOT GB gate
+    # closure, the earlier of the two GB day-ahead auctions (N2EX closes at 09:50).
+    day_ahead_cutoff: time = time(9, 20)
+    market_timezone: str = "Europe/London"
 
     @property
     def cors_origin_list(self) -> list[str]:

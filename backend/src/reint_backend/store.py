@@ -76,6 +76,26 @@ def replace_all(
         conn.execute("VACUUM")
 
 
+def load_actuals(path: Path) -> list[ActualRecord]:
+    with closing(connect(path)) as conn:
+        rows = conn.execute("SELECT * FROM actuals ORDER BY start_time").fetchall()
+    return [
+        ActualRecord.model_validate(
+            {"startTime": t, "settlementDate": d, "settlementPeriod": sp, "generation": mw}
+        )
+        for t, d, sp, mw in rows
+    ]
+
+
+def load_forecasts(path: Path) -> list[ForecastRecord]:
+    with closing(connect(path)) as conn:
+        rows = conn.execute("SELECT * FROM forecasts ORDER BY start_time, publish_time").fetchall()
+    return [
+        ForecastRecord.model_validate({"publishTime": p, "startTime": t, "generation": mw})
+        for p, t, mw in rows
+    ]
+
+
 def read_meta(path: Path) -> dict[str, Any]:
     with closing(connect(path)) as conn:
         return {

@@ -29,6 +29,18 @@ def test_replace_all_rebuilds_instead_of_appending(tmp_path: Path) -> None:
     assert store.read_meta(db) == {"run": 2}
 
 
+def test_loaders_round_trip_in_time_order(tmp_path: Path) -> None:
+    db = tmp_path / "wind.sqlite"
+    actuals = [actual(at(0.5), 950), actual(at(0), 900)]
+    forecasts = [forecast(at(-1), at(1), 1), forecast(at(-2), at(1), 2), forecast(at(-1), at(0))]
+    store.replace_all(db, actuals, forecasts, {})
+
+    assert store.load_actuals(db) == sorted(actuals, key=lambda a: a.start_time)
+    assert store.load_forecasts(db) == sorted(
+        forecasts, key=lambda f: (f.start_time, f.publish_time)
+    )
+
+
 @respx.mock
 def test_ingest_writes_clean_dataset_and_report(tmp_path: Path) -> None:
     respx.get(f"{BASE}/datasets/FUELHH/stream").mock(
