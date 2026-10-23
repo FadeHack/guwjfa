@@ -1,5 +1,5 @@
 // Same drawing as public/favicon.svg, but coloured by the page theme rather than the OS.
-// A wind curve crossed by the decision line: the moment the forecast had to be trusted.
+// A wind curve crossed by the day-ahead decision line.
 export function Mark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" className={className}>

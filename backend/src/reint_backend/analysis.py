@@ -92,10 +92,8 @@ def breakdown_by_level(
 ) -> list[LevelStats]:
     """Accuracy by how much wind was forecast. The last bucket is open-ended.
 
-    Bucketed on the forecast rather than the actual: the forecast is what the trader sees at
-    decision time, so "when the forecast says 15 GW, how far off is it" is the useful
-    question. Bucketing on actuals would also bias it: a bucket of very windy outcomes
-    collects mostly under-forecasts by construction.
+    Bucketed on the forecast, which is what the trader sees at decision time. Bucketing on
+    actuals would bias it: very windy outcomes are mostly under-forecasts by construction.
     """
     if not edges_mw or list(edges_mw) != sorted(set(edges_mw)):
         raise ValueError("edges_mw must be strictly increasing")

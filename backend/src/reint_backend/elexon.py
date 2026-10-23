@@ -40,9 +40,8 @@ def _time_chunks(start: datetime, end: datetime, days: int) -> Iterator[tuple[da
 
 
 class ElexonClient:
-    """Fetches the two BMRS datasets this app uses. Both `stream` endpoints return a bare
-    JSON array and accept the whole of January in one call, but chunking keeps a failed
-    request cheap to retry and avoids depending on an undocumented size limit."""
+    """Fetches FUELHH and WINDFOR. Both accept all of January in one call; chunking keeps a
+    failed request cheap to retry and avoids relying on an undocumented size limit."""
 
     def __init__(
         self,

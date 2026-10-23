@@ -14,7 +14,7 @@ export interface Column {
   tooltip: ReactNode
 }
 
-/** One series of columns, one neutral colour: the height is the message. */
+/** One series of columns in one neutral colour, so height is the only thing to compare. */
 export function ColumnChart({
   columns,
   width,

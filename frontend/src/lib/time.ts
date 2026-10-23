@@ -1,4 +1,4 @@
-// The API speaks UTC; the desk thinks in UK local time. Everything shown goes through here.
+// The API returns UTC and the page shows UK local time; every conversion goes through here.
 
 export const UK_TZ = 'Europe/London'
 
@@ -103,11 +103,6 @@ export const formatDay = (ms: number) => fmtDay.format(ms)
 export const formatShortDay = (ms: number) => fmtShortDay.format(ms)
 /** Mon 5 Jan, 14:00 */
 export const formatDayTime = (ms: number) => `${formatDay(ms)}, ${formatTime(ms)}`
-
-/** 5 Jan for a YYYY-MM-DD date. */
-export function formatDate(date: string): string {
-  return formatShortDay(ukWallTime(date, 12))
-}
 
 export const HOUR = HOUR_MS
 export const DAY = DAY_MS

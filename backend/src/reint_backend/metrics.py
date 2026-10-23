@@ -61,9 +61,8 @@ def pair_with_actuals(
 def error_stats(points: Sequence[ErrorPoint]) -> ErrorStats:
     """Headline accuracy for a set of forecasts.
 
-    Normalised MAE divides total absolute error by total actual output rather than averaging
-    per-point percentages. Per-point MAPE blows up on calm hours when actual output is near
-    zero; this ratio stays stable and still reads as "typically off by X% of output".
+    Normalised MAE is total absolute error over total actual output. Per-point MAPE blows up on
+    calm hours when output is near zero; this ratio stays stable.
     """
     if not points:
         raise ValueError("error_stats needs at least one point")

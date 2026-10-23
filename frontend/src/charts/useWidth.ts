@@ -1,9 +1,8 @@
 import { useCallback, useRef, useState } from 'react'
 
 /**
- * Live content width of an element. 0 until measured, and always 0 where ResizeObserver doesn't
- * exist (tests). A callback ref, so it starts measuring whenever the element mounts, even after
- * a loading state.
+ * Live content width of an element: 0 until measured, and always 0 without ResizeObserver (tests).
+ * A callback ref, so measuring starts whenever the element mounts, even after a loading state.
  */
 export function useWidth<E extends HTMLElement>(): [(el: E | null) => void, number] {
   const [width, setWidth] = useState(0)

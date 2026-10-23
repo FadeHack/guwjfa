@@ -100,9 +100,8 @@ export function SeriesChart({
 }
 
 /**
- * The identity motif: in day-ahead mode, the 09:20 deadline on each day before delivery, drawn
- * when the range is short enough for the lines to stay readable. Hovering an hour also marks the
- * moment its forecast had to be used (day-ahead) or was published (hours ahead).
+ * Day-ahead mode draws the 09:20 deadline on each day before delivery, for ranges short enough to
+ * stay readable. A hovered hour also marks when its forecast had to be used or was published.
  */
 function DecisionLines({
   rows,
