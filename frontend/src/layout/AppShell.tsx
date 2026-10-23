@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { ThemeSwitch } from '../theme/ThemeSwitch'
+import { Mark } from './Mark'
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
@@ -12,10 +13,13 @@ export function AppShell({ children }: { children: ReactNode }) {
       </a>
 
       <header className="mx-auto flex w-full max-w-page flex-wrap items-center justify-between gap-x-6 gap-y-3 px-gutter pt-6 pb-4">
-        <p className="text-label leading-tight">
-          <span className="block font-semibold text-ink">Wind forecast monitor</span>
-          <span className="block text-ink-muted">GB national wind, January 2026</span>
-        </p>
+        <div className="flex items-center gap-3">
+          <Mark className="size-9 shrink-0" />
+          <p className="text-label leading-tight">
+            <span className="block font-semibold text-ink">Wind forecast monitor</span>
+            <span className="block text-ink-muted">GB national wind, January 2026</span>
+          </p>
+        </div>
         <ThemeSwitch />
       </header>
 

@@ -12,6 +12,7 @@
   --hairline: #e2e2dd;
   --control: #7d8189;
   --forecast: #1d5fcc;
+  --forecast-on-ink: #79a7ff;
   --actual: #17191c;
   --over: #b5470b;
   --under: #0b7a78;
@@ -27,6 +28,7 @@
   --hairline: #2a2c30;
   --control: #6e737b;
   --forecast: #79a7ff;
+  --forecast-on-ink: #1d5fcc;
   --actual: #ecebe7;
   --over: #f0884a;
   --under: #3db8b3;
@@ -42,6 +44,7 @@
   --color-hairline: var(--hairline);
   --color-control: var(--control);
   --color-forecast: var(--forecast);
+  --color-forecast-on-ink: var(--forecast-on-ink);
   --color-actual: var(--actual);
   --color-over: var(--over);
   --color-under: var(--under);

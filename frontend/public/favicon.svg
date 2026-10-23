@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .tile { fill: #17191c }
+    .wind { stroke: #f6f6f3 }
+    .decision { stroke: #79a7ff }
+    @media (prefers-color-scheme: dark) {
+      .tile { fill: #ecebe7 }
+      .wind { stroke: #111214 }
+      .decision { stroke: #1d5fcc }
+    }
+  </style>
+  <rect class="tile" width="32" height="32" rx="7" />
+  <path class="decision" d="M20.5 6.5v19" fill="none" stroke-width="2" stroke-linecap="round" />
+  <path class="wind" d="M5 19c3.5-7.5 7.5-7.5 10.5-2.5s7 5 11.5-4" fill="none" stroke-width="2.75" stroke-linecap="round" />
+</svg>
